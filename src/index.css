@@ -94,3 +94,44 @@ h3 { font-size: 14px; }
   padding: 40px 20px;
   width: 100%;
 }
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
+}
+
+.intro-layout {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 10px;
+  }
+  
+  .game-layout {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .intro-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  h1 { font-size: 20px; }
+  .pixel-btn { font-size: 18px; padding: 10px; }
+  
+  /* Make range sliders touch friendly */
+  input[type=range] {
+    height: 30px;
+  }
+  
+  .pixel-panel {
+    padding: 15px;
+  }
+}

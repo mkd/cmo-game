@@ -567,9 +567,9 @@ function App() {
       {/* SPLASH SCREEN */}
       {phase === 'splash' && (
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <h1 style={{ color: '#88ff88', textShadow: '4px 4px 0px #aa00aa', fontSize: '64px', marginBottom: '20px', textAlign: 'center' }}>THE GROWTH ENGINE</h1>
+          <h1 className="splash-title">THE GROWTH ENGINE</h1>
           <p style={{ fontSize: '24px', color: 'var(--tertiary)', marginBottom: '50px' }}>A CMO Strategy Simulator</p>
-          <button className="pixel-btn" onClick={() => { startMusic('bgm'); setPhase('intro'); beep(); }} style={{ fontSize: '32px', padding: '20px 40px', animation: 'pulse 1.5s infinite' }}>
+          <button className="pixel-btn splash-btn" onClick={() => { startMusic('bgm'); setPhase('intro'); beep(); }}>
             CLICK TO START GAME
           </button>
         </div>
@@ -593,7 +593,7 @@ function App() {
 
       {phase === 'intro' && (
         <div className="pixel-panel" style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', gap: '20px' }}>
+          <div className="intro-layout">
             <img src={cmoAvatar} alt="CMO Avatar" style={{ width: '150px', height: '150px', border: '4px solid var(--text-color)', imageRendering: 'pixelated' }} />
             <div>
               <h2 style={{ color: 'var(--primary)' }}>CEO Briefing</h2>
@@ -677,7 +677,8 @@ function App() {
           
           <div style={{ padding: '20px', background: '#111', border: '2px solid var(--text-color)', marginBottom: '20px' }}>
             <p style={{ fontSize: '24px', marginBottom: '10px' }}>Final Market Share: <strong style={{ color: gameState.marketShare > 15 ? 'var(--accent)' : (gameState.marketShare < 5 ? 'var(--danger)' : 'var(--primary)') }}>{gameState.marketShare}%</strong></p>
-            <p style={{ fontSize: '24px' }}>Final Revenue: <strong style={{ color: 'var(--primary)' }}>{formatCurrency(gameState.revenue)}</strong></p>
+            <p style={{ fontSize: '24px', marginBottom: '10px' }}>Final Revenue: <strong style={{ color: 'var(--primary)' }}>{formatCurrency(gameState.revenue)}</strong></p>
+            <p style={{ fontSize: '24px' }}>Total Score (5-Year CAGR): <strong style={{ color: 'var(--tertiary)' }}>{(((Math.pow(gameState.revenue / 4500000, 1/5)) - 1) * 100).toFixed(2)}%</strong></p>
           </div>
 
           <div style={{ marginBottom: '30px', padding: '20px', border: '2px dashed var(--secondary)' }}>
@@ -710,7 +711,7 @@ function App() {
 
       {/* ALLOCATE and EVENT PHASES */}
       {(phase === 'event' || phase === 'allocate') && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '30px' }}>
+        <div className="game-layout">
           <main>
             {phase === 'event' && (
               <div className="pixel-panel" style={{ animation: 'fadeIn 0.5s' }}>
